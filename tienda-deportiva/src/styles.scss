@@ -1,0 +1,53 @@
+@use "@angular/material" as mat;
+
+html {
+  color-scheme: light;
+}
+
+body.dark-theme {
+  color-scheme: dark;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+ to {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+::view-transition-old(tarjeta) {
+  animation: scale-out 1s ease 0s 1 normal forwards;
+
+}
+
+::view-transition-new(tarjeta) {
+  animation: scale-in 0.5s ease 0s 1 normal forwards;
+  }

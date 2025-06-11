@@ -1,0 +1,49 @@
+<section>
+    <nav class="w-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 shadow-lg text-white px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center space-x-3">
+            <a routerLink="/cart" class="text-white hover:text-gray-300 text-2xl">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </nav>
+    <main class="min-h-screen bg-gradient-to-r from-violet-600 to-pink-500 flex items-center justify-center px-6 py-16">
+        <div class="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 text-center">
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-6">
+                {{ "CHECKOUT.TITLE" | translate }}
+            </h1>
+
+            <p class="text-lg text-gray-700 mb-2">
+                {{ "CART.TOTAL_LABEL" | translate }}:
+                <span class="font-bold text-fuchsia-600">{{ total | currency : "EUR" }}</span>
+            </p>
+
+            <form (submit)="pay($event)" class="space-y-6 mt-6">
+                <div #stripeContainer class="p-4 border border-gray-200 rounded-lg shadow-inner bg-gray-50"></div>
+
+                @if(msg() && isError()) {
+                <div class="text-sm text-red-600 bg-red-50 border border-red-100 py-2 px-3 rounded-lg">
+                    <i class="fas fa-exclamation-circle mr-1"></i> {{ "CHECKOUT.ERROR" | translate }}
+                </div>
+                } @if(msg() && !isError()) {
+                <div class="text-sm text-green-600 bg-green-50 border border-green-100 py-2 px-3 rounded-lg">
+                    <i class="fas fa-check-circle mr-1"></i> {{ "CHECKOUT.OK" | translate }}
+                </div>
+                }
+
+                <button
+                    type="submit"
+                    [disabled]="loading() || paid()"
+                    class="cursor-pointer w-full py-3 rounded-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 text-white font-bold shadow-md hover:from-indigo-700 hover:to-fuchsia-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    @if(paid()) {
+                    <i class="fas fa-lock mr-2"></i> {{ "CHECKOUT.PAYMENT_COMPLETE" | translate }}
+                    } @else if(loading()) {
+                    <i class="fas fa-spinner fa-spin mr-2"></i> {{ "CHECKOUT.PROCESSING" | translate }}
+                    } @else {
+                    <i class="fas fa-credit-card mr-2"></i> {{ "CHECKOUT.PAY_NOW" | translate }}
+                    }
+                </button>
+            </form>
+        </div>
+    </main>
+</section>

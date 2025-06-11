@@ -1,0 +1,201 @@
+<section class="bg-gradient-to-r from-violet-600 to-pink-500 text-gray-900 antialiased font-sans">
+    <nav class="w-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 shadow-lg text-white px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img
+                    src="assets/imgs/logo.webp"
+                    alt="{{ 'FOOTER.LOGO_ALT' | translate }}"
+                    class="h-10 w-auto transform hover:scale-110 transition duration-300"
+                />
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a routerLink="/home" class="hover:text-pink-200 transition px-3 py-2">
+                    {{ "HEADER.INICIO" | translate }}
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main
+        class="bg-gradient-to-r from-violet-600 to-pink-500 min-h-[calc(100vh-160px)] flex items-center justify-center py-16 px-4"
+    >
+        <div class="w-full max-w-md px-8 py-10 bg-white rounded-2xl shadow-lg border border-gray-100">
+            <div class="flex justify-center mb-6">
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 text-white"
+                >
+                    <i class="fas fa-user-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-2">
+                {{ "REGISTER.TITULO" | translate }}
+            </h1>
+            <p class="text-center text-gray-500 mb-6">
+                {{ "REGISTER.SUBTITULO" | translate }}
+            </p>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-6 w-full space-y-5">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.NAME_LABEL" | translate }}
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <input
+                            type="text"
+                            id="name"
+                            formControlName="name"
+                            placeholder="{{ 'REGISTER.NAME_PLACEHOLDER' | translate }}"
+                            class="pl-10 w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                        />
+                    </div>
+                    @if(registerForm.get('name')?.touched && registerForm.get('name')?.invalid) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <span>{{ "REGISTER.ERR_NAME_REQUIRED" | translate }}</span>
+                    </div>
+                    }
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.EMAIL_LABEL" | translate }}
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                        <input
+                            type="email"
+                            id="email"
+                            formControlName="email"
+                            placeholder="{{ 'REGISTER.EMAIL_PLACEHOLDER' | translate }}"
+                            class="pl-10 w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                        />
+                    </div>
+                    @if(registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+                    <div class="mt-1 text-sm text-red-600">
+                        @if(registerForm.get('email')?.errors?.['required']) {
+                        <span>{{ "REGISTER.ERR_EMAIL_REQUIRED" | translate }}</span>
+                        } @if(registerForm.get('email')?.errors?.['email']) {
+                        <span>{{ "REGISTER.ERR_EMAIL_FORMAT" | translate }}</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.PASSWORD_LABEL" | translate }}
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <input
+                            type="password"
+                            id="password"
+                            formControlName="password"
+                            placeholder="{{ 'REGISTER.PASSWORD_PLACEHOLDER' | translate }}"
+                            class="pl-10 w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                        />
+                    </div>
+                    @if(registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <span>{{ "REGISTER.ERR_PASSWORD_REQUIRED" | translate }}</span>
+                    </div>
+                    }
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.COUNTRY_LABEL" | translate }}
+                    </label>
+                    <select
+                        formControlName="isoCode"
+                        class="w-full rounded-lg border px-4 py-3 text-gray-900 focus:outline-none focus:border-indigo-600"
+                    >
+                        <option value="" disabled selected>
+                            {{ "REGISTER.COUNTRY_PLACEHOLDER" | translate }}
+                        </option>
+                        @for (c of countries(); track c.id) {
+                        <option [value]="c.isoCode">
+                            {{ c.name }}
+                        </option>
+                        }
+                    </select>
+                    @if(registerForm.get('isoCode')?.touched && registerForm.get('isoCode')?.invalid) {
+                    <div class="mt-1 text-sm text-red-600">
+                        {{ "REGISTER.ERR_COUNTRY_REQUIRED" | translate }}
+                    </div>
+                    }
+                </div>
+
+                @if (isSpain()) {
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.COMMUNITY_LABEL" | translate }}
+                    </label>
+
+                    <select
+                        formControlName="communityId"
+                        class="w-full rounded-lg border px-4 py-3 text-gray-900 focus:outline-none focus:border-indigo-600"
+                    >
+                        <option value="" disabled selected>
+                            {{ "REGISTER.COMMUNITY_PLACEHOLDER" | translate }}
+                        </option>
+                        @for (c of communities(); track c.id) {
+                        <option [value]="c.id">{{ c.name }}</option>
+                        }
+                    </select>
+                </div>
+
+                @if (provinces().length > 0) {
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ "REGISTER.PROVINCE_LABEL" | translate }}
+                    </label>
+
+                    <select
+                        formControlName="provinceId"
+                        class="w-full rounded-lg border px-4 py-3 text-gray-900 focus:outline-none focus:border-indigo-600"
+                    >
+                        <option value="" disabled selected>
+                            {{ "REGISTER.PROVINCE_PLACEHOLDER" | translate }}
+                        </option>
+                        @for (p of provinces(); track p.id) {
+                        <option [value]="p.id">{{ p.name }}</option>
+                        }
+                    </select>
+                </div>
+                } }
+
+                <button
+                    type="submit"
+                    [disabled]="loading() || registerForm.invalid"
+                    class="cursor-pointer w-full py-3 bg-gradient-to-r from-indigo-600 to-fuchsia-500 text-white font-medium text-base rounded-lg shadow hover:shadow-md hover:from-indigo-700 hover:to-fuchsia-600 transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+                >
+                    @if(loading()) {
+                    <span class="mr-2"><i class="fas fa-circle-notch fa-spin"></i></span>
+                    }
+                    {{ loading() ? ("REGISTER.BTN_LOADING" | translate) : ("REGISTER.BTN_SUBMIT" | translate) }}
+                </button>
+
+                @if(errorMessage()) {
+                <div class="text-sm text-center text-red-600 font-medium py-2 px-3 bg-red-50 rounded-lg border border-red-100">
+                    <i class="fas fa-exclamation-circle mr-1"></i>
+                    {{ errorMessage() }}
+                </div>
+                }
+            </form>
+
+            <div class="mt-6 text-center border-t border-gray-100 pt-6">
+                <a routerLink="/login" class="cursor-pointer font-medium text-indigo-600 hover:text-fuchsia-600 hover:underline">
+                    {{ "REGISTER.HAVE_ACCOUNT" | translate }}
+                </a>
+            </div>
+        </div>
+    </main>
+</section>

@@ -1,0 +1,142 @@
+<section class="bg-gradient-to-r from-violet-600 to-pink-500 text-gray-900 antialiased font-sans">
+    <nav class="w-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 shadow-lg text-white px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center space-x-4">
+            <a routerLink="/admin" class="text-white hover:text-gray-300 text-2xl">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </nav>
+
+    <main
+        class="min-h-[calc(100vh-160px)] bg-gradient-to-r from-violet-600 to-pink-500 flex items-center justify-center py-12 px-6"
+    >
+        <div class="w-full max-w-lg bg-white p-10 rounded-2xl shadow-2xl border border-gray-100">
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+                {{ "ADMIN.EDIT.TITLE" | translate }}
+            </h1>
+
+            <form [formGroup]="form" (ngSubmit)="update()" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.NAME_LABEL" | translate }}
+                    </label>
+                    <input
+                        type="text"
+                        id="name"
+                        formControlName="name"
+                        placeholder="{{ 'ADMIN.EDIT.NAME_PLACEHOLDER' | translate }}"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                    />
+                    @if(form.get('name')?.touched && form.get('name')?.invalid) {
+                    <p class="mt-1 text-sm text-red-500">
+                        {{ "ADMIN.EDIT.ERR_NAME_REQUIRED" | translate }}
+                    </p>
+                    }
+                </div>
+
+                <div>
+                    <label for="description" class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.DESC_LABEL" | translate }}
+                    </label>
+                    <textarea
+                        id="description"
+                        formControlName="description"
+                        rows="3"
+                        placeholder="{{ 'ADMIN.EDIT.DESC_PLACEHOLDER' | translate }}"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                    ></textarea>
+                    @if(form.get('description')?.touched && form.get('description')?.invalid) {
+                    <p class="mt-1 text-sm text-red-500">
+                        {{ "ADMIN.EDIT.ERR_DESC_REQUIRED" | translate }}
+                    </p>
+                    }
+                </div>
+
+                <div>
+                    <label for="category" class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.CAT_LABEL" | translate }}
+                    </label>
+                    <input
+                        type="text"
+                        id="category"
+                        formControlName="category"
+                        placeholder="{{ 'ADMIN.EDIT.CAT_PLACEHOLDER' | translate }}"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                    />
+                    @if(form.get('category')?.touched && form.get('category')?.invalid) {
+                    <p class="mt-1 text-sm text-red-500">
+                        {{ "ADMIN.EDIT.ERR_CAT_REQUIRED" | translate }}
+                    </p>
+                    }
+                </div>
+
+                <div>
+                    <label for="price" class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.PRICE_LABEL" | translate }}
+                    </label>
+                    <input
+                        type="number"
+                        id="price"
+                        formControlName="price"
+                        placeholder="{{ 'ADMIN.EDIT.PRICE_PLACEHOLDER' | translate }}"
+                        min="0"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                    />
+                    @if(form.get('price')?.touched && form.get('price')?.invalid) {
+                    <p class="mt-1 text-sm text-red-500">
+                        {{ "ADMIN.EDIT.ERR_PRICE_REQUIRED" | translate }}
+                    </p>
+                    }
+                </div>
+
+                <div>
+                    <label for="stock" class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.STOCK_LABEL" | translate }}
+                    </label>
+                    <input
+                        type="number"
+                        id="stock"
+                        formControlName="stock"
+                        placeholder="{{ 'ADMIN.EDIT.STOCK_PLACEHOLDER' | translate }}"
+                        min="0"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-fuchsia-200 transition"
+                    />
+                    @if(form.get('stock')?.touched && form.get('stock')?.invalid) {
+                    <p class="mt-1 text-sm text-red-500">
+                        {{ "ADMIN.EDIT.ERR_STOCK_REQUIRED" | translate }}
+                    </p>
+                    }
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">
+                        {{ "ADMIN.EDIT.IMAGE_LABEL" | translate }}
+                    </label>
+                    <input
+                        type="file"
+                        (change)="onFileSelected($event)"
+                        accept="image/*"
+                        class="cursor-pointer mt-2 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-fuchsia-600 transition"
+                    />
+                    @if(form.value.image) {
+                    <img
+                        [src]="form.value.image || 'assets/imgs/imagenPorDefecto.webp'"
+                        alt="{{ 'ADMIN.EDIT.IMAGE_PREVIEW_ALT' | translate }}"
+                        class="w-full h-64 object-cover rounded-md border border-gray-300 mt-4"
+                    />
+                    }
+                </div>
+
+                <div class="flex justify-center">
+                    <button
+                        type="submit"
+                        [disabled]="form.invalid || loading()"
+                        class="cursor-pointer w-full py-3 bg-gradient-to-r from-indigo-600 to-fuchsia-500 text-white font-bold rounded-lg shadow-md hover:from-indigo-700 hover:to-fuchsia-600 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        {{ loading() ? ("ADMIN.EDIT.BTN_LOADING" | translate) : ("ADMIN.EDIT.BTN_SUBMIT" | translate) }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</section>

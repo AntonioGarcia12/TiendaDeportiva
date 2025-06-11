@@ -1,0 +1,115 @@
+<section class="min-h-screen bg-gradient-to-r from-violet-600 to-pink-500 text-gray-900 antialiased font-sans">
+    <nav class="w-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 shadow-lg text-white px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a routerLink="/home" class="text-white hover:text-gray-300 text-2xl">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </nav>
+
+    <main class="min-h-[calc(100vh-160px)] py-12 px-6 bg-gradient-to-r from-violet-600 to-pink-500">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <div class="flex items-center gap-2">
+                    <label for="categorySelect" class="text-white font-medium">
+                        {{ "VIEWCATALOG.FILTRAR_POR_CATEGORIA" | translate }}
+                    </label>
+                    <select
+                        id="categorySelect"
+                        (change)="onCategoryChange($any($event.target).value)"
+                        class="px-3 py-2 rounded-lg bg-white text-indigo-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+                    >
+                        @for (cat of categorias(); track cat) {
+                        <option [value]="cat">
+                            {{ (cat === "all" ? "VIEWCATALOG.TODAS" : "CATEGORIES." + cat) | translate }}
+                        </option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="relative">
+                    <button
+                        type="button"
+                        class="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-indigo-600 hover:bg-indigo-100 transition shadow-sm"
+                        (click)="toggleDropdown()"
+                    >
+                        <i class="fas fa-sort-amount-down-alt"></i>
+                        {{ "VIEWCATALOG.ORDENAR_POR_PRECIO" | translate }}
+                        <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </button>
+
+                    @if (dropdownOpen()) {
+                    <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                        <button
+                            (click)="changeSort('asc')"
+                            class="cursor-pointer block w-full text-left px-4 py-2 text-gray-700 hover:bg-indigo-100 transition"
+                            [class.font-semibold]="sortOrder() === 'asc'"
+                        >
+                            {{ "VIEWCATALOG.PRECIO_MENOR" | translate }}
+                        </button>
+                        <button
+                            (click)="changeSort('desc')"
+                            class="cursor-pointer block w-full text-left px-4 py-2 text-gray-700 hover:bg-indigo-100 transition"
+                            [class.font-semibold]="sortOrder() === 'desc'"
+                        >
+                            {{ "VIEWCATALOG.PRECIO_MAYOR" | translate }}
+                        </button>
+                        <button
+                            (click)="changeSort(null)"
+                            class="cursor-pointer block w-full text-left px-4 py-2 hover:bg-indigo-100 transition"
+                            [class.font-semibold]="!sortOrder()"
+                        >
+                            {{ "VIEWCATALOG.SIN_ORDEN" | translate }}
+                        </button>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-center text-white mb-10">
+                {{ "VIEWCATALOG.TODOS_PRODUCTOS" | translate }}
+            </h2>
+            @if (loading()) {
+            <div class="text-center text-yellow-300 text-lg font-medium">
+                <i class="fas fa-spinner fa-spin mr-2"></i>
+                {{ "VIEWCATALOG.CARGANDO_PRODUCTOS_MENSAJE" | translate }}
+            </div>
+            } @else if (errorMessage()) {
+            <div class="text-center text-red-100 font-semibold">
+                {{ errorMessage() }}
+            </div>
+            } @else if (sorted().length > 0) {
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                @for (producto of sorted(); track producto.id) {
+                <app-rating [product]="producto"></app-rating>
+                }
+            </div>
+
+            <div class="mt-12 flex justify-center items-center gap-3">
+                <button
+                    (click)="prev()"
+                    [disabled]="!hasPrev()"
+                    class="w-10 h-10 rounded-full border border-gray-300 text-white bg-indigo-500 hover:bg-indigo-600 hover:border-indigo-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                    ‹
+                </button>
+                <span class="px-4 py-2 text-sm text-white font-medium">
+                    {{ "VIEWCATALOG.PAGINA" | translate }} {{ page() }} {{ "VIEWCATALOG.DE" | translate }} {{ totalPages() }}
+                </span>
+                <button
+                    (click)="next()"
+                    [disabled]="!hasNext()"
+                    class="w-10 h-10 rounded-full border border-gray-300 text-white bg-indigo-500 hover:bg-indigo-600 hover:border-indigo-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                    ›
+                </button>
+            </div>
+            } @else {
+            <div class="text-center text-white mt-10">
+                {{ "VIEWCATALOG.NO_PRODUCTOS" | translate }}
+            </div>
+            }
+        </div>
+    </main>
+</section>

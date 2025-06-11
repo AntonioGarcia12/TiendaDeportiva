@@ -1,0 +1,276 @@
+{
+  "common": {
+    "accessDenied": "Acceso denegado",
+    "close": "Cerrar"
+  },
+  "confirmdialog": {
+    "no": "No",
+    "yes": "Sí"
+  },
+  "errors": {
+    "unknown": "Error desconocido"
+  },
+  "hello": "Bienvenido a Jenga 🙌",
+
+  "ARIA": {
+    "ABRIR_MENU": "Abrir menú",
+    "CERRAR_BUSQUEDA": "Cerrar búsqueda",
+    "VER_CARRITO": "Ver carrito"
+  },
+
+  "FOOTER": {
+    "LOGO_ALT": "Logo Mizuna",
+     "ENLACES_TITULO": "Enlaces",
+    "CONTACTO_TITULO": "Contacto",
+    "DESCRIPCION": "Tu tienda especializada en material deportivo de alta calidad para atletas exigentes.",
+    "DERECHOS": "Todos los derechos reservados."
+  },
+
+    "HEADER": {
+    "INICIO": "Inicio",
+    "CATALOGO": "Catálogo",
+    "DEPORTES": "Deportes",
+    "MARCAS": "Marcas",
+    "NOSOTROS": "Nosotros",
+    "BUSCAR": "Buscar...",
+    "HOLA": "Hola",
+    "CARRITO": "Carrito",
+    "HISTORIAL": "Mis compras"
+  },
+
+
+  "BUTTON": {
+    "VER_CATALOGO": "Ver catálogo completo",
+    "SUSCRIBIRSE": "Suscribirse",
+    "ACCEDER": "Acceder",
+    "CERRAR_SESION": "Cerrar sesión",
+    "CANCELAR": "Cancelar",
+    "VER_MAS": "Ver más"
+
+  },
+
+  "HOME": {
+    "TITULO": "Rendimiento y estilo para cada atleta",
+    "VALORACION": "Producto valorado correctamente",
+    "DESCRIPCION": "Equípate con la mejor tecnología deportiva y lleva tu pasión al siguiente nivel.",
+    "PRODUCTOS_TITULO": "Mejor valorados",
+    "CARGANDO_PRODUCTOS_MENSAJE": "Cargando productos...",
+    "NO_PRODUCTOS": "No se encontraron productos.",
+    "POR_QUE_ELEGIRNOS_TITULO": "¿Por qué elegirnos?",
+    "POR_QUE": {
+      "CALIDAD_TITULO": "Calidad garantizada",
+      "CALIDAD_DESC": "Productos originales con garantía del fabricante",
+      "ENVIOS_TITULO": "Envíos rápidos",
+      "ENVIOS_DESC": "Recibe tu pedido en 24‑48 h con seguimiento en tiempo real",
+      "PASION_TITULO": "Pasión por el deporte",
+      "PASION_DESC": "Un equipo que vive el deporte como tú, para ofrecerte lo mejor"
+    },
+
+    "SOBRE_TITULO": "Sobre Mizuna",
+    "SOBRE_DESCRIPCION": "En Mizuna encontrarás equipamiento deportivo de alto rendimiento diseñado para atletas que buscan lo mejor. Nos apasiona el deporte y trabajamos cada día para ofrecerte productos de calidad, confianza y estilo.",
+    "SOBRE_CARD_PRODUCTOS": "Productos",
+    "SOBRE_CARD_MARCAS": "Marcas",
+    "SOBRE_CARD_CLIENTES": "Clientes",
+    "SOBRE_CARD_ANOS": "Años de experiencia",
+    "NEWSLETTER_TITULO": "Suscríbete a nuestra newsletter",
+    "NEWSLETTER_DESCRIPCION": "Entérate antes que nadie de lanzamientos, ofertas exclusivas y consejos para mejorar tu rendimiento.",
+    "NEWSLETTER_PLACEHOLDER": "Correo electrónico",
+    "NEWSLETTER_LEGAL": "Al suscribirte, aceptas nuestra política de privacidad y el envío de comunicaciones comerciales."
+  },
+
+
+  "DIALOG": {
+    "LOGOUT_TITLE": "¿Cerrar sesión?",
+    "LOGOUT_MESSAGE": "¿Estás seguro de que deseas cerrar sesión?"
+  },
+
+
+  "CATEGORIES": {
+    "Ciclismo": "Ciclismo",
+    "Futbol":     "Fútbol",
+    "Padel":      "Pádel",
+    "Tenis":      "Tenis",
+    "Musculacion":   "Musculación",
+    "Rugby":      "Rugby",
+    "Surf":   "Surf"
+  },
+  "VIEWCATALOG": {
+    "FILTRAR_POR_CATEGORIA":      "Filtrar por categoría:",
+    "TODAS":                      "Todas",
+    "ORDENAR_POR_PRECIO":         "Ordenar por precio:",
+    "PRECIO_MENOR":               "Precio menor",
+    "PRECIO_MAYOR":               "Precio mayor",
+    "TODOS_PRODUCTOS":            "Todos los productos",
+    "CARGANDO_PRODUCTOS_MENSAJE": "Cargando productos...",
+    "PAGINA":                     "Página",
+    "DE":                         "de",
+    "NO_PRODUCTOS":               "No hay productos disponibles por el momento.",
+    "SIN_ORDEN": "Sin orden"
+  },
+
+  "VIEW-PRODUCT": {
+    "CARGANDO_PRODUCTO":        "Cargando producto...",
+    "SIN_VALORACIONES":         "Sin valoraciones todavía",
+    "VALORACIONES":             "valoraciones",
+    "COMENTARIOS":              "Comentarios",
+    "STOCK_DISPONIBLE":         "Stock disponible:",
+    "CANTIDAD":                 "Cantidad",
+    "AÑADIR_CARRITO":           "Añadir al carrito",
+    "PRODUCTO_AÑADIDO":         "Producto añadido",
+    "PRODUCTO_AÑADIDO_MENSAJE": "El producto se ha añadido al carrito correctamente."
+  },
+
+   "LOGIN": {
+    "TITULO":             "Área de Cliente",
+    "SUBTITULO":          "Accede a tu cuenta para gestionar tus pedidos",
+    "EMAIL_LABEL":        "Correo electrónico",
+    "EMAIL_PLACEHOLDER":  "Introduce tu correo electrónico",
+    "ERR_EMAIL_REQUIRED": "El email es obligatorio",
+    "ERR_EMAIL_FORMAT":   "Formato de email inválido",
+    "PASSWORD_LABEL":     "Contraseña",
+    "ERR_PASSWORD_REQUIRED":"Contraseña obligatoria",
+    "PASSWORD_PLACEHOLDER":"Contraseña",
+    "TOGGLE_PASSWORD":    "Mostrar / ocultar contraseña",
+    "BTN_SUBMIT":         "Iniciar sesión",
+    "BTN_LOADING":        "Iniciando sesión...",
+    "NO_ACCOUNT":         "¿No tienes cuenta? Regístrate aquí",
+    "ERR_NOT_AUTHORIZED": "Acceso denegado"
+  },
+
+  "REGISTER": {
+    "TITULO":                   "Crear Cuenta",
+    "SUBTITULO":                "Regístrate para comenzar",
+    "NAME_LABEL":               "Nombre",
+    "NAME_PLACEHOLDER":         "Nombre completo",
+    "ERR_NAME_REQUIRED":        "El nombre es obligatorio",
+    "EMAIL_LABEL":              "Correo electrónico",
+    "EMAIL_PLACEHOLDER":        "Correo electrónico",
+    "ERR_EMAIL_REQUIRED":       "El email es obligatorio",
+    "ERR_EMAIL_FORMAT":         "Formato de email inválido",
+    "PASSWORD_LABEL":           "Contraseña",
+    "PASSWORD_PLACEHOLDER":     "Contraseña",
+    "ERR_PASSWORD_REQUIRED":    "Contraseña obligatoria",
+    "COUNTRY_LABEL":            "País",
+    "COUNTRY_PLACEHOLDER":      "Seleccione país",
+    "ERR_COUNTRY_REQUIRED":     "El país es obligatorio",
+    "COMMUNITY_LABEL":          "Comunidad autónoma",
+    "COMMUNITY_PLACEHOLDER":    "Seleccione comunidad",
+    "PROVINCE_LABEL":           "Provincia",
+    "PROVINCE_PLACEHOLDER":     "Seleccione provincia",
+    "BTN_SUBMIT":               "Registrarse",
+    "BTN_LOADING":              "Registrando...",
+    "HAVE_ACCOUNT":             "¿Ya tienes cuenta? Inicia sesión aquí"
+  },
+  "ADMIN": {
+     "CREATE": {
+      "TITULO":                "Crear producto",
+      "NAME_LABEL":            "Nombre",
+      "NAME_PLACEHOLDER":      "Nombre del producto",
+      "ERR_NAME_REQUIRED":     "El nombre es obligatorio",
+      "DESC_LABEL":            "Descripción",
+      "DESC_PLACEHOLDER":      "Descripción",
+      "ERR_DESC_REQUIRED":     "Descripción obligatoria",
+      "CAT_LABEL":             "Categoría",
+      "CAT_PLACEHOLDER":       "Categoría",
+      "ERR_CAT_REQUIRED":      "Categoría obligatoria",
+      "PRICE_LABEL":           "Precio",
+      "PRICE_PLACEHOLDER":     "0",
+      "ERR_PRICE_REQUIRED":    "Precio obligatorio",
+      "STOCK_LABEL":           "Stock",
+      "STOCK_PLACEHOLDER":     "0",
+      "ERR_STOCK_REQUIRED":    "Stock obligatorio",
+      "IMAGE_LABEL":           "Imagen del producto",
+      "IMAGE_PREVIEW_ALT":     "Vista previa de la imagen",
+      "BTN_SUBMIT":            "Crear",
+      "BTN_LOADING":           "Cargando..."
+    },
+    "EDIT": {
+      "TITLE":                 "Editar producto",
+      "NAME_LABEL":            "Nombre",
+      "NAME_PLACEHOLDER":      "Nombre del producto",
+      "ERR_NAME_REQUIRED":     "El nombre es obligatorio",
+      "DESC_LABEL":            "Descripción",
+      "DESC_PLACEHOLDER":      "Descripción",
+      "ERR_DESC_REQUIRED":     "Descripción obligatoria",
+      "CAT_LABEL":             "Categoría",
+      "CAT_PLACEHOLDER":       "Categoría del producto",
+      "ERR_CAT_REQUIRED":      "Categoría obligatoria",
+      "PRICE_LABEL":           "Precio (€)",
+      "PRICE_PLACEHOLDER":     "0",
+      "ERR_PRICE_REQUIRED":    "Precio obligatorio",
+      "STOCK_LABEL":           "Stock",
+      "STOCK_PLACEHOLDER":     "0",
+      "ERR_STOCK_REQUIRED":    "Stock obligatorio",
+      "IMAGE_LABEL":           "Imagen del producto",
+      "IMAGE_PREVIEW_ALT":     "Vista previa de la imagen",
+      "BTN_SUBMIT":            "Guardar cambios",
+      "BTN_LOADING":           "Guardando..."
+    },
+    "CREATE_SUCCESS": "Producto creado correctamente.",
+    "EDIT_SUCCESS":   "Producto editado correctamente.",
+    "BUSCAR_PLACEHOLDER": "Buscar productos por nombre o categoría",
+    "TITULO":               "Panel de administración",
+    "BTN_LOGOUT":           "Cerrar sesión",
+    "LOGOUT_TITLE":         "¿Cerrar sesión?",
+    "LOGOUT_MESSAGE":       "¿Estás seguro de que deseas cerrar sesión?",
+    "IMAGEN":               "Imagen",
+    "NOMBRE":               "Nombre",
+    "PRECIO":               "Precio",
+    "CATEGORIA":            "Categoría",
+    "DESCRIPCION":          "Descripción",
+    "STOCK":                "Stock",
+    "ACCIONES":             "Acciones",
+    "NO_PRODUCTOS":         "No hay productos",
+    "BTN_ADD":              "Añadir",
+    "BTN_EDIT":             "Editar",
+    "BTN_DELETE":           "Eliminar",
+    "BTN_CANCEL":           "Cancelar",
+    "DELETE_TITLE":         "¿Eliminar producto?",
+    "DELETE_MESSAGE":       "¿Estás seguro de que deseas eliminar este producto?",
+    "MSG_DELETED":          "Producto eliminado correctamente"
+  },
+  "PURCHASE": {
+    "BACK":                 "Volver",
+    "TITLE":                "Historial de Compras",
+    "NO_HISTORY":           "No has realizado compras aún.",
+    "TOTAL":                "Total",
+    "VIEW_DETAILS":         "Ver detalle",
+    "QUANTITY":             "Cantidad",
+    "COMMENT_PLACEHOLDER":  "Deja un comentario (opcional)",
+    "SEND":                 "Enviar",
+    "YOUR_RATING":          "Tu valoración"
+  },
+  "CHECKOUT": {
+    "TITLE":             "Resumen de compra",
+    "TOTAL_LABEL":       "Total a pagar",
+    "PAYMENT_COMPLETE":  "Pago completo",
+    "PROCESSING":        "Procesando...",
+    "PAY_NOW":           "Pagar ahora",
+    "OK":                "¡Compra realizada correctamente!",
+    "ERROR":   "Ha ocurrido un error procesando el pago"
+  },
+  "CART": {
+    "TITLE":            "Tu carrito",
+    "EMPTY":            "Tu carrito está vacío.",
+    "DECREASE":         "Disminuir",
+    "INCREASE":         "Aumentar cantidad",
+    "NO_MORE_STOCK":    "No hay más stock",
+    "REMOVE":           "Eliminar",
+    "TOTAL_LABEL":      "Total",
+    "CLEAR_CART":       "Vaciar carrito",
+    "BUY":              "Comprar",
+    "DELETE_TITLE":     "¿Vaciar carrito?",
+    "DELETE_MESSAGE":   "¿Estás seguro de que deseas eliminar todos los productos?",
+    "DELETE_CONFIRM":   "Vaciar",
+    "DELETE_CANCEL":    "Cancelar"
+  },
+  "SEARCH": {
+    "RESULTS_FOR": "Resultados de búsqueda para",
+    "LOADING":     "Cargando productos…",
+    "VIEW_MORE":   "Ver más",
+    "NO_RESULTS":  "No se encontraron productos para"
+  }
+
+
+
+}

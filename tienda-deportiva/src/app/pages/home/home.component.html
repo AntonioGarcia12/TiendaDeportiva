@@ -1,0 +1,469 @@
+<section class="bg-emerald-50 text-gray-900 antialiased font-sans">
+    <header class="sticky top-0 z-50 w-full bg-gradient-to-r from-indigo-600 to-fuchsia-500 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img
+                    src="assets/imgs/logo.webp"
+                    [attr.alt]="'FOOTER.LOGO_ALT' | translate"
+                    class="h-10 w-auto transform hover:scale-110 transition duration-300"
+                />
+            </div>
+
+            <button
+                (click)="menuOpen.set(!menuOpen())"
+                class="md:hidden text-white text-2xl focus:outline-none"
+                [attr.aria-label]="'ARIA.ABRIR_MENU' | translate"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#" class="text-white hover:text-pink-200 transition duration-200">
+                    {{ "HEADER.INICIO" | translate }}
+                </a>
+
+                <a href="#" class="text-white hover:text-pink-200 transition duration-200">
+                    {{ "HEADER.NOSOTROS" | translate }}
+                </a>
+
+                <div class="relative text-white" (mouseenter)="showSports()" (mouseleave)="hideSportsDelayed()">
+                    <a href="#" class="text-white hover:text-pink-200 transition-colors duration-200 font-medium">
+                        {{ "HEADER.DEPORTES" | translate }}
+                    </a>
+
+                    @if (showSportsMenu()) {
+                    <ul
+                        class="absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg py-2 ring-1 ring-gray-200 z-50 transition-opacity duration-200"
+                    >
+                        @for (cat of categories(); track cat) {
+                        <li
+                            (click)="viewByCategory(cat)"
+                            class="px-4 py-2 text-indigo-700 hover:bg-indigo-50 hover:text-indigo-900 cursor-pointer transition-colors duration-150 flex items-center space-x-2"
+                        >
+                            <i
+                                class="fas fa-circle text-xs"
+                                [ngClass]="{
+                                    'text-fuchsia-500': activeCategory() === cat,
+                                    'text-indigo-300': activeCategory() !== cat
+                                }"
+                            ></i>
+                            <span class="truncate">{{ "CATEGORIES." + cat | translate }}</span>
+                        </li>
+                        }
+                    </ul>
+                    }
+                </div>
+
+                @if(isLogged) {
+                <a routerLink="/purchase" class="text-white hover:text-pink-200 transition-colors duration-200 font-medium">
+                    {{ "HEADER.HISTORIAL" | translate }}
+                </a>
+                }
+
+                <div class="ml-4 relative text-white">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                        <i class="fas fa-search text-white/80"></i>
+                    </span>
+                    <input
+                        type="text"
+                        [formControl]="searcher"
+                        [attr.placeholder]="'HEADER.BUSCAR' | translate"
+                        class="cursor-pointer pl-9 pr-3 py-2 rounded-full bg-white/10 border border-white/40 text-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition"
+                        (focus)="showResults.set(true)"
+                        (keydown.enter)="search()"
+                        autocomplete="off"
+                    />
+
+                    @if(showResults()) {
+                    <button
+                        (click)="showResults.set(false); searcher.setValue('')"
+                        class="absolute inset-y-0 right-2 flex items-center justify-center text-white text-lg focus:outline-none"
+                        [attr.aria-label]="'ARIA.CERRAR_BUSQUEDA' | translate"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                    } @if(showResults() && searcher.value && results().length) {
+                    <ul
+                        class="absolute left-0 right-0 mt-1 bg-white text-gray-900 rounded-lg shadow-lg max-h-60 overflow-auto z-50"
+                    >
+                        @for(producto of results().slice(0, 5); track producto.id) {
+                        <li
+                            (click)="viewProduct(producto.id); showResults.set(false)"
+                            class="px-4 py-2 hover:bg-indigo-100 cursor-pointer flex items-center space-x-2"
+                        >
+                            <img
+                                [src]="producto.image || 'assets/imgs/imagenPorDefecto.webp'"
+                                [attr.alt]="producto.name"
+                                class="h-6 w-6 object-contain"
+                            />
+                            <span class="truncate">{{ producto.name }}</span>
+                        </li>
+                        }
+                    </ul>
+                    }
+                </div>
+                <div class="flex items-center space-x-4 ml-6">
+                    <a
+                        (click)="cambiarIdioma('es')"
+                        class="flex items-center space-x-1 cursor-pointer px-2 py-1 text-white hover:text-yellow-300 transition duration-200 rounded"
+                        [class.font-bold]="translate.currentLang === 'es'"
+                    >
+                        <img src="assets/imgs/Bandera_de_España.webp" class="w-5 h-5" alt="Español" />
+                    </a>
+                    <a
+                        (click)="cambiarIdioma('en')"
+                        class="flex items-center space-x-1 cursor-pointer px-2 py-1 text-white hover:text-yellow-300 transition duration-200 rounded"
+                        [class.font-bold]="translate.currentLang === 'en'"
+                    >
+                        <img src="assets/imgs/Flag_of_the_United_Kingdom.webp" class="w-5 h-5" alt="English" />
+                    </a>
+                </div>
+            </nav>
+
+            @if(showLogoutDialog()) {
+            <div
+                class="cursor-pointer fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[1000] transition-opacity duration-300"
+                (click)="cancelLogout()"
+            >
+                <div
+                    class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm text-center transform transition-all duration-300 scale-100 border-t-4 border-fuchsia-500"
+                    (click)="$event.stopPropagation()"
+                >
+                    <h2 class="text-xl font-bold text-gray-800 mb-3">
+                        {{ "DIALOG.LOGOUT_TITLE" | translate }}
+                    </h2>
+                    <p class="text-gray-600 mb-6">
+                        {{ "DIALOG.LOGOUT_MESSAGE" | translate }}
+                    </p>
+                    <div class="flex justify-center gap-4">
+                        <button
+                            (click)="confirmLogout()"
+                            class="cursor-pointer px-5 py-2 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white hover:from-red-700 hover:to-red-600 transition font-medium shadow"
+                        >
+                            {{ "BUTTON.CERRAR_SESION" | translate }}
+                        </button>
+                        <button
+                            (click)="cancelLogout()"
+                            class="cursor-pointer px-5 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition font-medium shadow"
+                        >
+                            {{ "BUTTON.CANCELAR" | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div class="hidden md:flex items-center space-x-6">
+                @if(isLogged) {
+                <span class="hidden sm:inline text-sm text-white"> {{ "HEADER.HOLA" | translate }}, {{ userName }} </span>
+                <button
+                    (click)="logout()"
+                    [attr.title]="'BUTTON.CERRAR_SESION' | translate"
+                    class="cursor-pointer text-white hover:text-pink-200 text-xl transition duration-200"
+                >
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+                } @else {
+                <button
+                    routerLink="/login"
+                    class="cursor-pointer flex items-center text-white hover:text-pink-200 text-xl transition duration-200 group"
+                >
+                    <i class="fas fa-user"></i>
+                    <span class="hidden sm:inline ml-2 group-hover:text-pink-200 transition duration-200">
+                        {{ "BUTTON.ACCEDER" | translate }}
+                    </span>
+                </button>
+                }
+
+                <a
+                    (click)="cart()"
+                    class="cursor-pointer group flex items-center text-white"
+                    [attr.aria-label]="'ARIA.VER_CARRITO' | translate"
+                >
+                    <i class="fas fa-shopping-cart text-xl transition duration-200 group-hover:text-pink-200"></i>
+                    <span class="hidden sm:inline ml-2 group-hover:text-pink-200 transition duration-200">
+                        {{ "HEADER.CARRITO" | translate }}
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        @if(menuOpen()) {
+        <div class="md:hidden px-6 pb-4 space-y-2 text-white text-sm font-medium bg-indigo-600">
+            <a
+                href="#"
+                (click)="menuOpen.set(false)"
+                class="block py-1 border-b border-indigo-500 hover:text-pink-200 transition duration-200"
+            >
+                {{ "HEADER.INICIO" | translate }}
+            </a>
+            <a
+                href="#"
+                (click)="menuOpen.set(false)"
+                class="block py-1 border-b border-indigo-500 hover:text-pink-200 transition duration-200"
+            >
+                {{ "HEADER.DEPORTES" | translate }}
+            </a>
+
+            @if(isLogged) {
+            <a
+                routerLink="/purchase"
+                (click)="menuOpen.set(false)"
+                class="block py-1 border-b border-indigo-500 hover:text-pink-200 transition duration-200"
+            >
+                {{ "HEADER.HISTORIAL" | translate }}
+            </a>
+            }
+            <a
+                (click)="cambiarIdioma('es'); menuOpen.set(false)"
+                class="block py-1 border-b border-indigo-500 hover:text-pink-200 transition duration-200"
+            >
+                ES
+            </a>
+            <a
+                (click)="cambiarIdioma('en'); menuOpen.set(false)"
+                class="block py-1 border-b border-indigo-500 hover:text-pink-200 transition duration-200"
+            >
+                EN
+            </a>
+            <div class="pt-4 border-t border-indigo-500 flex flex-col space-y-2">
+                @if(isLogged) {
+                <span class="text-pink-200"> {{ "HEADER.HOLA" | translate }}, {{ userName }} </span>
+                <button (click)="logout(); menuOpen.set(false)" class="text-left hover:text-pink-200 transition duration-200">
+                    {{ "BUTTON.CERRAR_SESION" | translate }}
+                </button>
+                } @else {
+                <button
+                    routerLink="/login"
+                    (click)="menuOpen.set(false)"
+                    class="text-left hover:text-pink-200 transition duration-200"
+                >
+                    {{ "BUTTON.ACCEDER" | translate }}
+                </button>
+                }
+                <a (click)="cart(); menuOpen.set(false)" class="hover:text-pink-200 transition duration-200">
+                    {{ "HEADER.CARRITO" | translate }}
+                </a>
+                <input
+                    type="text"
+                    [formControl]="searcher"
+                    [attr.placeholder]="'HEADER.BUSCAR' | translate"
+                    class="w-full mt-2 px-3 py-1 rounded-md border border-purple-300 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition"
+                    (keydown.enter)="search()"
+                />
+            </div>
+        </div>
+        }
+    </header>
+
+    <section class="bg-gradient-to-r from-indigo-600 to-fuchsia-500 text-white py-20 text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                {{ "HOME.TITULO" | translate }}
+            </h1>
+            <p class="mt-6 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                {{ "HOME.DESCRIPCION" | translate }}
+            </p>
+            <div class="mt-10">
+                <button
+                    routerLink="/viewCatalog"
+                    class="cursor-pointer px-8 py-4 bg-yellow-400 text-indigo-900 font-semibold rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg transform hover:scale-105"
+                >
+                    {{ "BUTTON.VER_CATALOGO" | translate }}
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-12 bg-gradient-to-r from-indigo-50 to-fuchsia-50" style="view-transition-name: tarjeta">
+        <div class="w-full mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-10 text-center text-indigo-800">
+                {{ "HOME.PRODUCTOS_TITULO" | translate }}
+            </h2>
+            @if (loading()) {
+            <div class="text-center py-10">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-4 border-r-4 border-fuchsia-500 mb-4"></div>
+                <p class="text-fuchsia-600 text-lg font-medium">{{ "HOME.CARGANDO_PRODUCTOS_MENSAJE" | translate }}</p>
+            </div>
+            } @if (!loading() && errorMessage()) {
+            <div class="text-center py-10 bg-red-50 rounded-xl border border-red-100">
+                <i class="fas fa-exclamation-circle text-red-500 text-4xl mb-4"></i>
+                <p class="text-red-600 font-semibold text-lg">
+                    {{ errorMessage() }}
+                </p>
+            </div>
+            }@if (!loading() && !errorMessage() && topRated().length > 0) {
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                @for (producto of topRated(); track producto.id) {
+                <app-rating [product]="producto"></app-rating>
+                }
+            </div>
+            } @else {
+            <div class="text-center py-10 bg-white rounded-xl border border-indigo-100">
+                <i class="fas fa-box-open text-indigo-300 text-4xl mb-4"></i>
+                <p class="text-indigo-500 text-lg">{{ "HOME.NO_PRODUCTOS" | translate }}</p>
+            </div>
+            }
+        </div>
+    </section>
+
+    <section class="bg-indigo-50 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-2xl font-bold mb-12 text-center text-indigo-800">
+                {{ "HOME.POR_QUE_ELEGIRNOS_TITULO" | translate }}
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-b-4 border-fuchsia-500"
+                >
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-indigo-700">{{ "HOME.POR_QUE.CALIDAD_TITULO" | translate }}</h3>
+                    <p class="text-gray-600">{{ "HOME.POR_QUE.CALIDAD_DESC" | translate }}</p>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-b-4 border-fuchsia-500"
+                >
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shipping-fast text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-indigo-700">{{ "HOME.POR_QUE.ENVIOS_TITULO" | translate }}</h3>
+                    <p class="text-gray-600">{{ "HOME.POR_QUE.ENVIOS_DESC" | translate }}</p>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-b-4 border-fuchsia-500"
+                >
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-running text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-indigo-700">{{ "HOME.POR_QUE.PASION_TITULO" | translate }}</h3>
+                    <p class="text-gray-600">{{ "HOME.POR_QUE.PASION_DESC" | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-16 bg-gradient-to-r from-indigo-50 to-fuchsia-50 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10 text-center text-indigo-800">{{ "HOME.SOBRE_TITULO" | translate }}</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-md text-center border-l-4 border-r-4 border-fuchsia-500">
+                <p class="text-gray-600 leading-relaxed">{{ "HOME.SOBRE_DESCRIPCION" | translate }}</p>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="transform hover:scale-110 transition duration-300">
+                        <div class="text-fuchsia-600 font-bold text-3xl">+5K</div>
+                        <p class="text-gray-500 text-sm">{{ "HOME.SOBRE_CARD_PRODUCTOS" | translate }}</p>
+                    </div>
+
+                    <div class="transform hover:scale-110 transition duration-300">
+                        <div class="text-fuchsia-600 font-bold text-3xl">+50</div>
+                        <p class="text-gray-500 text-sm">{{ "HOME.SOBRE_CARD_MARCAS" | translate }}</p>
+                    </div>
+
+                    <div class="transform hover:scale-110 transition duration-300">
+                        <div class="text-fuchsia-600 font-bold text-3xl">+100K</div>
+                        <p class="text-gray-500 text-sm">{{ "HOME.SOBRE_CARD_CLIENTES" | translate }}</p>
+                    </div>
+
+                    <div class="transform hover:scale-110 transition duration-300">
+                        <div class="text-fuchsia-600 font-bold text-3xl">12</div>
+                        <p class="text-gray-500 text-sm">{{ "HOME.SOBRE_CARD_ANOS" | translate }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-indigo-600 to-fuchsia-500 py-16 text-white">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-3xl font-bold mb-4">{{ "HOME.NEWSLETTER_TITULO" | translate }}</h2>
+            <p class="text-indigo-100 mb-8 max-w-2xl mx-auto">
+                {{ "HOME.NEWSLETTER_DESCRIPCION" | translate }}
+            </p>
+            <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
+                <div class="relative w-full">
+                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fas fa-envelope text-white/80"></i>
+                    </span>
+                    <input
+                        type="email"
+                        [attr.placeholder]="'HOME.NEWSLETTER_PLACEHOLDER' | translate"
+                        class="pl-11 pr-4 py-4 w-full rounded-full bg-white/10 border border-white/40 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white focus:border-white shadow-lg transition"
+                    />
+                </div>
+                <button
+                    class="cursor-pointer bg-yellow-400 hover:bg-yellow-300 text-indigo-900 font-semibold px-8 py-4 rounded-full shadow-lg w-full sm:w-auto transition duration-300 transform hover:scale-105"
+                >
+                    {{ "BUTTON.SUSCRIBIRSE" | translate }}
+                </button>
+            </form>
+
+            <p class="text-xs text-indigo-200 mt-4">
+                {{ "HOME.NEWSLETTER_LEGAL" | translate }}
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-emerald-50 text-gray-600 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="assets/imgs/logo.webp" [attr.alt]="'FOOTER.LOGO_ALT' | translate" class="h-8 w-auto" />
+                        <span class="text-indigo-900 font-bold">Mizuna</span>
+                    </div>
+                    <p class="text-sm">{{ "FOOTER.DESCRIPCION" | translate }}</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-800 transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-800 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-800 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-fuchsia-500 font-bold mb-4">{{ "FOOTER.ENLACES_TITULO" | translate }}</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="#" class="hover:text-indigo-800 transition">{{ "HEADER.INICIO" | translate }}</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:text-indigo-800 transition">{{ "HEADER.CATALOGO" | translate }}</a>
+                        </li>
+                        <li><a href="#" class="hover:text-indigo-800 transition">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-fuchsia-500 font-bold mb-4">{{ "FOOTER.CONTACTO_TITULO" | translate }}</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>Calle Deporte 123, 11012 Cádiz</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-2"></i>
+                            <span>+34 912 345 678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 text-center text-sm">
+                <p>&copy; 2025 Mizuna. {{ "FOOTER.DERECHOS" | translate }}</p>
+            </div>
+        </div>
+    </footer>
+    @if (successMessage()) {
+    <div class="fixed top-6 right-6 z-[9999] bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg animate-fade-in-out">
+        <i class="fas fa-check-circle mr-2"></i>{{ "HOME.VALORACION" | translate }}
+    </div>
+    }
+</section>

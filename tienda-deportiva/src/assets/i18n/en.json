@@ -1,0 +1,268 @@
+{
+    "common": {
+        "accessDenied": "Access denied",
+        "close": "Close"
+    },
+    "confirmdialog": {
+        "no": "No",
+        "yes": "Yes"
+    },
+    "errors": {
+        "unknown": "Unknown error"
+    },
+    "hello": "Welcome to Jenga 🙌",
+
+    "ARIA": {
+        "ABRIR_MENU": "Open menu",
+        "CERRAR_BUSQUEDA": "Close search",
+        "VER_CARRITO": "View cart"
+    },
+
+    "FOOTER": {
+        "LOGO_ALT": "Mizuna logo",
+        "ENLACES_TITULO": "Links",
+        "CONTACTO_TITULO": "Contact",
+        "DESCRIPCION": "Your specialist store for high‑quality sports gear for demanding athletes.",
+        "DERECHOS": "All rights reserved."
+    },
+
+    "HEADER": {
+        "INICIO": "Home",
+        "CATALOGO": "Catalog",
+        "DEPORTES": "Sports",
+        "MARCAS": "Brands",
+        "NOSOTROS": "About us",
+        "BUSCAR": "Search...",
+        "HOLA": "Hello",
+        "CARRITO": "Cart",
+        "HISTORIAL": "My purchases"
+    },
+
+    "BUTTON": {
+        "VER_CATALOGO": "See full catalog",
+        "SUSCRIBIRSE": "Subscribe",
+        "ACCEDER": "Log in",
+        "CERRAR_SESION": "Log out",
+        "CANCELAR": "Cancel",
+        "VER_MAS": "See more"
+    },
+
+    "HOME": {
+        "PRODUCTOS_TITULO": "Top-Rated",
+        "VALORACION": "Product rated correctly",
+        "CARGANDO_PRODUCTOS_MENSAJE": "Loading products...",
+        "NO_PRODUCTOS": "No products found.",
+        "POR_QUE_ELEGIRNOS_TITULO": "Why choose us?",
+        "TITULO": "Performance and style for every athlete",
+        "DESCRIPCION": "Gear up with the best sports tech and take your passion to the next level.",
+        "POR_QUE": {
+            "CALIDAD_TITULO": "Guaranteed quality",
+            "CALIDAD_DESC": "Original products with manufacturer warranty",
+            "ENVIOS_TITULO": "Fast shipping",
+            "ENVIOS_DESC": "Receive your order in 24‑48 h with real‑time tracking",
+            "PASION_TITULO": "Passion for sport",
+            "PASION_DESC": "A team that lives sport like you, offering you the best"
+        },
+        "SOBRE_TITULO": "About Mizuna",
+        "SOBRE_DESCRIPCION": "At Mizuna you will find high‑performance sports gear designed for athletes who want the best. We are passionate about sport and work every day to offer you quality, trust and style.",
+        "SOBRE_CARD_PRODUCTOS": "Products",
+        "SOBRE_CARD_MARCAS": "Brands",
+        "SOBRE_CARD_CLIENTES": "Customers",
+        "SOBRE_CARD_ANOS": "Years of experience",
+        "NEWSLETTER_TITULO": "Subscribe to our newsletter",
+        "NEWSLETTER_DESCRIPCION": "Be the first to know about launches, exclusive offers and tips to boost your performance.",
+        "NEWSLETTER_PLACEHOLDER": "Email address",
+        "NEWSLETTER_LEGAL": "By subscribing, you agree to our privacy policy and to receive commercial communications."
+    },
+
+    "DIALOG": {
+        "LOGOUT_TITLE": "Log out?",
+        "LOGOUT_MESSAGE": "Are you sure you want to log out?"
+    },
+
+    "CATEGORIES": {
+        "Ciclismo": "Cycling",
+        "Futbol": "Football",
+        "Padel": "Padel",
+        "Tenis": "Tennis",
+        "Musculacion": "Bodybuilding",
+        "Rugby": "Rugby",
+        "Surf": "Surf"
+    },
+
+    "VIEWCATALOG": {
+    "FILTRAR_POR_CATEGORIA":      "Filter by category:",
+    "TODAS":                      "All",
+    "ORDENAR_POR_PRECIO":         "Sort by price:",
+    "PRECIO_MENOR":               "Lowest price",
+    "PRECIO_MAYOR":               "Highest price",
+    "TODOS_PRODUCTOS":            "All products",
+    "CARGANDO_PRODUCTOS_MENSAJE": "Loading products...",
+    "PAGINA":                     "Page",
+    "DE":                         "of",
+    "NO_PRODUCTOS":               "No products available at the moment.",
+    "SIN_ORDEN":                   "No sorting"
+  },
+   "VIEW-PRODUCT": {
+    "CARGANDO_PRODUCTO":        "Loading product...",
+    "SIN_VALORACIONES":         "No ratings yet",
+    "VALORACIONES":             "ratings",
+    "COMENTARIOS":              "Comments",
+    "STOCK_DISPONIBLE":         "Available stock:",
+    "CANTIDAD":                 "Quantity",
+    "AÑADIR_CARRITO":           "Add to cart",
+    "PRODUCTO_AÑADIDO":         "Product added",
+    "PRODUCTO_AÑADIDO_MENSAJE": "The product has been added to the cart successfully."
+  },
+
+  "LOGIN": {
+    "TITULO":             "Customer Area",
+    "SUBTITULO":          "Log in to manage your orders",
+    "EMAIL_LABEL":        "Email address",
+    "EMAIL_PLACEHOLDER":  "Enter your email address",
+    "ERR_EMAIL_REQUIRED": "Email is required",
+    "ERR_EMAIL_FORMAT":   "Invalid email format",
+    "PASSWORD_LABEL":     "Password",
+    "PASSWORD_PLACEHOLDER":"Password",
+    "ERR_PASSWORD_REQUIRED":"Password is required",
+    "TOGGLE_PASSWORD":    "Show / hide password",
+    "BTN_SUBMIT":         "Sign in",
+    "BTN_LOADING":        "Signing in...",
+    "NO_ACCOUNT":         "Don't have an account? Register here",
+    "ERR_NOT_AUTHORIZED": "Access denied"
+  },
+
+  "REGISTER": {
+    "TITULO":                   "Create Account",
+    "SUBTITULO":                "Sign up to get started",
+    "NAME_LABEL":               "Full Name",
+    "NAME_PLACEHOLDER":         "Full name",
+    "ERR_NAME_REQUIRED":        "Name is required",
+    "EMAIL_LABEL":              "Email address",
+    "EMAIL_PLACEHOLDER":        "Email address",
+    "ERR_EMAIL_REQUIRED":       "Email is required",
+    "ERR_EMAIL_FORMAT":         "Invalid email format",
+    "PASSWORD_LABEL":           "Password",
+    "PASSWORD_PLACEHOLDER":     "Password",
+    "ERR_PASSWORD_REQUIRED":    "Password is required",
+    "COUNTRY_LABEL":            "Country",
+    "COUNTRY_PLACEHOLDER":      "Select country",
+    "ERR_COUNTRY_REQUIRED":     "Country is required",
+    "COMMUNITY_LABEL":          "Autonomous community",
+    "COMMUNITY_PLACEHOLDER":    "Select community",
+    "PROVINCE_LABEL":           "Province",
+    "PROVINCE_PLACEHOLDER":     "Select province",
+    "BTN_SUBMIT":               "Sign up",
+    "BTN_LOADING":              "Signing up...",
+    "HAVE_ACCOUNT":             "Already have an account? Sign in here"
+  },
+
+  "ADMIN": {
+    "CREATE": {
+      "TITULO":                "Create Product",
+      "NAME_LABEL":            "Name",
+      "NAME_PLACEHOLDER":      "Product name",
+      "ERR_NAME_REQUIRED":     "Name is required",
+      "DESC_LABEL":            "Description",
+      "DESC_PLACEHOLDER":      "Description",
+      "ERR_DESC_REQUIRED":     "Description is required",
+      "CAT_LABEL":             "Category",
+      "CAT_PLACEHOLDER":       "Category",
+      "ERR_CAT_REQUIRED":      "Category is required",
+      "PRICE_LABEL":           "Price",
+      "PRICE_PLACEHOLDER":     "0",
+      "ERR_PRICE_REQUIRED":    "Price is required",
+      "STOCK_LABEL":           "Stock",
+      "STOCK_PLACEHOLDER":     "0",
+      "ERR_STOCK_REQUIRED":    "Stock is required",
+      "IMAGE_LABEL":           "Product image",
+      "IMAGE_PREVIEW_ALT":     "Image preview",
+      "BTN_SUBMIT":            "Create",
+      "BTN_LOADING":           "Loading..."
+    },"EDIT": {
+      "TITLE":                 "Edit Product",
+      "NAME_LABEL":            "Name",
+      "NAME_PLACEHOLDER":      "Product name",
+      "ERR_NAME_REQUIRED":     "Name is required",
+      "DESC_LABEL":            "Description",
+      "DESC_PLACEHOLDER":      "Description",
+      "ERR_DESC_REQUIRED":     "Description is required",
+      "CAT_LABEL":             "Category",
+      "CAT_PLACEHOLDER":       "Product category",
+      "ERR_CAT_REQUIRED":      "Category is required",
+      "PRICE_LABEL":           "Price (€)",
+      "PRICE_PLACEHOLDER":     "0",
+      "ERR_PRICE_REQUIRED":    "Price is required",
+      "STOCK_LABEL":           "Stock",
+      "STOCK_PLACEHOLDER":     "0",
+      "ERR_STOCK_REQUIRED":    "Stock is required",
+      "IMAGE_LABEL":           "Product image",
+      "IMAGE_PREVIEW_ALT":     "Image preview",
+      "BTN_SUBMIT":            "Save changes",
+      "BTN_LOADING":           "Saving..."
+    },
+    "CREATE_SUCCESS": "Account created successfully",
+    "EDIT_SUCCESS": "Product edited successfully",
+    "BUSCAR_PLACEHOLDER": "Search products by name or category",
+    "TITULO":               "Admin Panel",
+    "BTN_LOGOUT":           "Log out",
+    "LOGOUT_TITLE":         "Log out?",
+    "LOGOUT_MESSAGE":       "Are you sure you want to log out?",
+    "IMAGEN":               "Image",
+    "NOMBRE":               "Name",
+    "PRECIO":               "Price",
+    "CATEGORIA":            "Category",
+    "DESCRIPCION":          "Description",
+    "STOCK":                "Stock",
+    "ACCIONES":             "Actions",
+    "NO_PRODUCTOS":         "No products",
+    "BTN_ADD":              "Add",
+    "BTN_EDIT":             "Edit",
+    "BTN_DELETE":           "Delete",
+    "BTN_CANCEL":           "Cancel",
+    "DELETE_TITLE":         "Delete product?",
+    "DELETE_MESSAGE":       "Are you sure you want to delete this product?",
+    "MSG_DELETED":          "Product deleted successfully"
+  },
+  "PURCHASE": {
+    "BACK":                 "Back",
+    "TITLE":                "Purchase History",
+    "NO_HISTORY":           "You have not made any purchases yet.",
+    "TOTAL":                "Total",
+    "VIEW_DETAILS":         "View details",
+    "QUANTITY":             "Quantity",
+    "COMMENT_PLACEHOLDER":  "Leave a comment (optional)",
+    "SEND":                 "Send",
+    "YOUR_RATING":          "Your rating"
+  },
+  "CHECKOUT": {
+    "TITLE":             "Order summary",
+    "TOTAL_LABEL":       "Total to pay",
+    "PAYMENT_COMPLETE":  "Payment complete",
+    "PROCESSING":        "Processing...",
+    "PAY_NOW":           "Pay now",
+    "OK":                "Purchase completed successfully!",
+    "ERROR":             "An error occurred while processing your order."
+  },
+  "CART": {
+    "TITLE":            "Your cart",
+    "EMPTY":            "Your cart is empty.",
+    "DECREASE":         "Decrease",
+    "INCREASE":         "Increase quantity",
+    "NO_MORE_STOCK":    "No more stock",
+    "REMOVE":           "Remove",
+    "TOTAL_LABEL":      "Total",
+    "CLEAR_CART":       "Clear cart",
+    "BUY":              "Checkout",
+    "DELETE_TITLE":     "Clear cart?",
+    "DELETE_MESSAGE":   "Are you sure you want to remove all items?",
+    "DELETE_CONFIRM":   "Clear",
+    "DELETE_CANCEL":    "Cancel"
+  },
+  "SEARCH": {
+    "RESULTS_FOR": "Search results for",
+    "LOADING":     "Loading products…",
+    "VIEW_MORE":   "View more",
+    "NO_RESULTS":  "No products found for"
+  }
+}

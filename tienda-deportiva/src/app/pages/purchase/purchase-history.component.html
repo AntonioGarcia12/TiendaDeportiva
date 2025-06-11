@@ -1,0 +1,126 @@
+<section class="min-h-screen bg-gradient-to-r from-violet-600 to-pink-500 py-12 px-6 text-white font-sans">
+    <div class="max-w-5xl mx-auto">
+        <a routerLink="/home" class="inline-flex items-center text-white hover:text-yellow-300 transition mb-8 text-xl">
+            <i class="fas fa-arrow-left mr-2"></i>
+        </a>
+
+        <h1 class="text-3xl font-extrabold text-center mb-12">
+            {{ "PURCHASE.TITLE" | translate }}
+        </h1>
+
+        @if (history().length === 0) {
+        <p class="text-center text-white/90 text-lg">
+            {{ "PURCHASE.NO_HISTORY" | translate }}
+        </p>
+        } @else {
+        <ul class="space-y-8 overflow-auto max-h-[calc(100vh-280px)] pr-2">
+            @for (p of history(); track p.id) {
+            <li class="bg-white text-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-500">
+                        {{ p.date | date : "dd-MM-yyyy, HH:mm" }}
+                    </span>
+                </div>
+
+                <p class="mt-3 font-medium text-fuchsia-600">
+                    {{ "PURCHASE.TOTAL" | translate }}: {{ p.total | currency : "EUR" }}
+                </p>
+
+                <details class="mt-4">
+                    <summary class="cursor-pointer text-indigo-600 font-medium hover:underline">
+                        {{ "PURCHASE.VIEW_DETAILS" | translate }}
+                    </summary>
+
+                    <ul class="mt-3 space-y-2">
+                        @for (item of p.items; track item.id) {
+                        <li class="flex flex-col md:flex-row md:justify-between border-b border-gray-100 pb-4">
+                            <div class="flex items-center space-x-3">
+                                <img [src]="item.image" [alt]="item.name" class="h-12 w-12 object-contain rounded-lg border" />
+                                <div>
+                                    <p class="font-medium text-gray-800">{{ item.name }}</p>
+                                    <p class="text-sm text-gray-500">
+                                        {{ "PURCHASE.QUANTITY" | translate }}: {{ item.quantity }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 md:mt-0 flex flex-col items-start md:items-end">
+                                <span class="font-semibold text-gray-800">
+                                    {{ item.price * item.quantity | currency : "EUR" }}
+                                </span>
+
+                                @if (item.score === null || editingItemId() === item.id) {
+                                <form class="mt-4 w-full md:w-auto space-y-2" (ngSubmit)="onRate(item.id)">
+                                    <div class="mt-4 flex items-center justify-end space-x-1">
+                                        @for (star of [1,2,3,4,5]; track star) {
+                                        <div class="relative">
+                                            @if ((tempRatings[item.id] || item.score || 0) >= star) {
+                                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                                            } @else if ((tempRatings[item.id] || item.score || 0) >= (star - 0.5)) {
+                                            <i class="fas fa-star-half-alt text-yellow-400 text-2xl"></i>
+                                            } @else {
+                                            <i class="far fa-star text-gray-300 text-2xl"></i>
+                                            }
+
+                                            <div class="absolute inset-0 flex">
+                                                <span
+                                                    class="w-1/2 h-full cursor-pointer"
+                                                    (click)="tempRatings[item.id] = star - 0.5"
+                                                ></span>
+                                                <span
+                                                    class="w-1/2 h-full cursor-pointer"
+                                                    (click)="tempRatings[item.id] = star"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+
+                                    <textarea
+                                        [(ngModel)]="tempComments[item.id]"
+                                        name="comment-{{ item.id }}"
+                                        rows="2"
+                                        placeholder="{{ 'PURCHASE.COMMENT_PLACEHOLDER' | translate }}"
+                                        class="block w-full bg-white text-gray-800 rounded p-2"
+                                    ></textarea>
+
+                                    <div class="flex space-x-2">
+                                        <button
+                                            type="submit"
+                                            [disabled]="!(tempRatings[item.id] > 0 || item.score)"
+                                            class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white rounded px-4 py-1"
+                                        >
+                                            {{ "PURCHASE.SEND" | translate }}
+                                        </button>
+                                    </div>
+                                </form>
+
+                                } @else {
+                                <div class="mt-4 text-right">
+                                    <p class="font-medium text-gray-800">
+                                        {{ "PURCHASE.YOUR_RATING" | translate }}
+                                    </p>
+                                    <div class="flex items-center justify-end space-x-1 mt-1">
+                                        @for (star of [1,2,3,4,5]; track star) {
+                                        <i
+                                            class="fas fa-star"
+                                            [ngClass]="star <= (item.score || 0) ? 'text-yellow-400' : 'text-gray-300'"
+                                        ></i>
+                                        }
+                                    </div>
+                                    <p class="mt-2 text-gray-600 italic">
+                                        {{ item.comment }}
+                                    </p>
+                                </div>
+                                }
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </details>
+            </li>
+            }
+        </ul>
+        }
+    </div>
+</section>
